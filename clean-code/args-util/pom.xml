@@ -9,6 +9,10 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -17,7 +21,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
                     <configuration>
-                        <release>11</release>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                     </configuration>
                 </plugin>
             </plugins>
