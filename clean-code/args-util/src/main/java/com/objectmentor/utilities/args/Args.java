@@ -17,7 +17,7 @@ public class Args {
     }
 
     private void parseSchema(String schema) throws ArgsException {
-        for (String element : schema.split(".")) {
+        for (String element : schema.split(",")) {
             if (element.length() > 0)
                 parseSchemaElement(element.trim());
         }
