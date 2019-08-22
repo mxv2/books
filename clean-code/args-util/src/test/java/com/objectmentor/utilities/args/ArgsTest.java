@@ -6,8 +6,12 @@ import org.junit.Test;
 public class ArgsTest {
     @Test
     public void testCreateArgs() throws Exception {
-        String[] args = new String[]{};
-        Args argsParser = new Args("1.p#.d#*", args);
+        String[] args = new String[]{"-l", "-p", "5000", "-d", "/app", "/srv"};
+        Args argsParser = new Args("l,p#,d[*]", args);
         Assert.assertNotNull(argsParser);
+
+        Assert.assertTrue(argsParser.has('l'));
+        Assert.assertTrue(argsParser.has('p'));
+        Assert.assertTrue(argsParser.has('d'));
     }
 }
