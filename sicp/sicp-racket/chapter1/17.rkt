@@ -3,14 +3,10 @@
 (#%require rackunit)
 
 (define (mult a b)
-  (if (or (= a 0) (= b 0))
-    0
-    (mult-iter a b 0)))
-
-(define (mult-iter a b k)
-  (cond ((= a 1) (max k b))
-        ((even? a) (mult-iter (halve a) b (+ k (double b))))
-        (else (mult-iter (- a 1) b (+ k b)))))
+  (cond ((= a 0) 0)
+        ((= a 1) b)
+        ((even? a) (double (mult (halve a) b)))
+        (else (+ b (mult (- a 1) b)))))
 
 (define (even? x)
   (= (remainder x 2) 0))
@@ -27,4 +23,5 @@
 (check-equal? (mult 2 2) 4)
 (check-equal? (mult 4 5) 20)
 (check-equal? (mult 3 52) 156)
+(check-equal? (mult 100 2) 200)
 
