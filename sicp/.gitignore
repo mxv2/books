@@ -1,6 +1,2 @@
 # VIM specific files
 *.swp
-
-# macOS junk
-.DS_Store
-
