@@ -1,14 +1,20 @@
 #lang sicp
 
+(#%provide make-rat numer denom add-rat sub-rat mul-rat div-rat equal-rat? print-rat)
+
 (define (gcd a b)
   (if (= b 0)
       a
       (gcd b (remainder a b))))
 
 (define (make-rat n d)
+  (define (normalize n d f)
+    (if (> d 0)
+      (f n d)
+      (f (- n) (abs d))))
+
   (let ((g (gcd n d)))
-    (cons (/ n g) 
-          (/ d g))))
+    (normalize (/ n g) (/ d g) cons)))
 
 (define (numer x) (car x))
 
