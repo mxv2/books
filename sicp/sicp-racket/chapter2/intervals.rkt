@@ -1,6 +1,14 @@
 #lang sicp
 
-(#%provide make-interval upper-bound lower-bound add-interval sub-interval mul-interval div-interval)
+(#%provide 
+  make-interval 
+  width
+  upper-bound 
+  lower-bound 
+  add-interval 
+  sub-interval 
+  mul-interval 
+  div-interval)
 
 (define (make-interval a b) (cons a b))
 
@@ -9,6 +17,9 @@
 
 (define (lower-bound z)
   (car z))
+
+(define (width z)
+  (/ (- (upper-bound z) (lower-bound z)) 2))
 
 (define (add-interval x y)
   (make-interval (+ (lower-bound x) 
